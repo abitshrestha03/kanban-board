@@ -1,0 +1,12 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+   "compilerOptions": {
+    "strict": true,  // Enable strict mode globally
+    "skipLibCheck": true, // Skip checking of declaration files for faster builds
+    "forceConsistentCasingInFileNames": true // Ensure file name casing consistency
+  }
+}
