@@ -172,17 +172,22 @@ const KanbanBoard = () => {
   );
 
 
-const addColumn = useCallback(() => {
-  if (newColumnTitle.trim() === "") {
-    alert('Column Name is required');
-    return;
-  }
-  saveToHistory([
-    ...columns,
-    { id: uuidv4(), title: newColumnTitle.trim(), tasks: [] },
-  ]);
-  setNewColumnTitle("");
-}, [newColumnTitle, columns, saveToHistory]);
+  //add new column
+  const addColumn = useCallback(() => {
+    if (newColumnTitle.trim() === "") {alert('Column Name is required'); return;}
+    saveToHistory([
+      ...columns,
+      { id: uuidv4(), title: newColumnTitle.trim(), tasks: [] },
+    ]);
+    setNewColumnTitle("");
+  }, [newColumnTitle, columns, saveToHistory]);
+
+  const deleteColumn = useCallback(
+    (columnId: string) => {
+      saveToHistory(columns.filter((col) => col.id !== columnId));
+    },
+    [columns, saveToHistory]
+  );
 
   //undo changes
   const undo = useCallback(() => {
